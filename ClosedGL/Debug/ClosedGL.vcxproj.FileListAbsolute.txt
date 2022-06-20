@@ -1,1 +1,4 @@
 C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\ClosedGL.exe
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\ClosedGL.vcxproj.CopyComplete
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\gtest.pdb
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\gtest_main.pdb
