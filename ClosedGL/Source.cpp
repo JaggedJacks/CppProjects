@@ -36,7 +36,7 @@ TEST(TimelyPayments, AFewMissedPayments) {
 
 TEST(TimelyPayments, ExtraPaymentsMade) {
     MultipleUsers userList;
-    cout << userList.user[5].name <<"\n";
+    cout << userList.user[4].name <<"\n";
     cout << "Actual Payments Size: "<< sizeof(userList.user[5].actualPayments) <<"\n";
     cout << "Length Of Membership: " << sizeof(userList.user[5].lengthOfMembership)<<"\n";
     cout << "Total Amount Expected: " << userList.user[5].totalAmountExpected<<"\n";
@@ -45,6 +45,10 @@ TEST(TimelyPayments, ExtraPaymentsMade) {
 
 }
 
+TEST(UnauthorizedUser, InformationDenied) {
+    MultipleUsers userList;
+    EXPECT_EQ(userList.user[5].status, "Authentication failed!");
+}
 int main(int argc, char* argv[])
 {
     GLFWwindow* window;
