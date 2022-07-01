@@ -1,12 +1,4 @@
-﻿  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  Source.cpp
-  Generating Code...
-  LINK : C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\ClosedGL.exe not found or not built by the last incremental link; performing full link
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿  Source.cpp
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(64,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(69,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   ClosedGL.vcxproj -> C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\ClosedGL.exe
