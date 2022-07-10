@@ -1,4 +1,6 @@
 ﻿  Source.cpp
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(64,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(69,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(67,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(72,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(158,22): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(158,16): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
   ClosedGL.vcxproj -> C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\ClosedGL.exe

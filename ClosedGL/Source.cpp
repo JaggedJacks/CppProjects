@@ -5,6 +5,9 @@
 #include <gtest/gtest.h>
 #include <UserInfo.h>
 
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
+
 using namespace std;
 
 
@@ -67,6 +70,8 @@ void drawLines(bool revAlert) {
         glColor3f(0.0, 1.0, 0.0); //green
         glVertex2f(-.5, 0);
         glVertex2f(-.1, .5);
+
+        RUN_ALL_TESTS();
     }
         glLineWidth(1);
         glEnd();
@@ -118,7 +123,7 @@ int main(int argc, char* argv[])
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Hello World", NULL, NULL);//determines how big your screen is
 
     if (!window)
     {
@@ -129,6 +134,14 @@ int main(int argc, char* argv[])
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    float vertices[] =
+    {
+        0 ,300, //top left
+        300, 300, //top right
+        300, 0, //bottom right
+        0, 0 // bottom left
+    };
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -142,12 +155,36 @@ int main(int argc, char* argv[])
     static const char* items[]{ "Jill","Scott","Tanner" };
     static int selectedItem = 0;
 
+    glViewport(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT); //specifies the part of the window to which OpenGL will draw (in pixels), convert from normalised to pixels
+    glMatrixMode(GL_PROJECTION);// projection matrix defines the properties of the camera that views the objects in the world coordinate frame. Here you typically set the zoom factor, aspect ration and the near and far clipping planes
+    glLoadIdentity(); // replace the current matrix with the identity matrix and starts us a fresh becausematrix transformations such as glOrpho and glRotate cumulate, basically puts us at (0,0,0)
+    glOrtho(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT, 0, 1); //essentially set coordinate system
+    glMatrixMode(GL_MODELVIEW); // (default matrix mode) modelview matrix defines how your objects are transformed (meaning translation, rotation and scaling) in your world
+    glLoadIdentity(); //same as above comment
+
+    GLfloat pointVertex[] = { SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
+    GLfloat pointVertex2[] = { SCREEN_WIDTH * 0.75, SCREEN_HEIGHT * 0.75};
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
+
+        // Render OpenGL here
+        glEnable(GL_POINT_SMOOTH);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glPointSize(50);//anywhere before drawarrays
+        glVertexPointer(2, GL_FLOAT, 0, pointVertex);
+        glDrawArrays(GL_POINTS, 0, 1);
+        glDisableClientState(GL_VERTEX_ARRAY);
+        glDisable(GL_POINT_SMOOTH);
+
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glPointSize(10);//anywhere before drawarrays
+        glVertexPointer(2, GL_FLOAT, 0, pointVertex2);
+        glDrawArrays(GL_POINTS, 0, 1);
+        glDisableClientState(GL_VERTEX_ARRAY);
 
         
         ImGui_ImplOpenGL3_NewFrame();
@@ -157,7 +194,7 @@ int main(int argc, char* argv[])
             ImGui::NewFrame();
             ImGui::Begin("Welcome to the revenue recovery app!");
             ImGui::Text("Who are you?");
-            ImGui::ListBox("ListBox", &selectedItem,
+            ImGui::ListBox("Chose your user", &selectedItem,
                 items, IM_ARRAYSIZE(items));
             ImGui::End();
         }
@@ -187,7 +224,7 @@ int main(int argc, char* argv[])
     ImGui::DestroyContext();
 
     glfwTerminate();
-    RUN_ALL_TESTS();
+
     return 0;
 }
 
