@@ -45,8 +45,9 @@ public:
     float* actualPaymentsToPlot;
     int* paymentLengthToPlot;
 
-    GLfloat** expectedPaymentGraphPoints;
-    GLfloat** actualPaymentGraphPoints;
+    GLfloat* expectedPaymentGraphPoints;
+    GLfloat* actualPaymentGraphPoints;
+    int largestExpectedPayment;
 
     UserInfo(string name, int* expectedPayments, int* actualPayments, int lengthOfMembership, bool authentication);
     UserInfo();
@@ -55,7 +56,7 @@ public:
 
 private:
     void setLargestPayment();
-    int largestExpectedPayment;
+    
     int graphCeiling;
 };
 
@@ -79,37 +80,34 @@ UserInfo::UserInfo(string name, int* expectedPayments, int* actualPayments, int 
 
     /***************Translate Graphical Information******************/
     setLargestPayment();
-    cout <<"Largest Expected Payment:" << largestExpectedPayment << "\n";
-    setGraphCeiling(largestExpectedPayment);
-    cout<<"Graph Ceiling:"<< graphCeiling << "\n";
+    //cout <<"Largest Expected Payment:" << largestExpectedPayment << "\n";
+    setGraphCeiling(largestExpectedPayment+100); //enter a UI element that calls this to change the graph scale
+    //cout<<"Graph Ceiling:"<< graphCeiling << "\n";
     //Payments
         for (int j = 0; j < lengthOfMembership; j++) {
-            expectedPaymentsToPlot[j] = START_Y + ((float)expectedPayments[j] / (float) largestExpectedPayment) * (END_Y - START_Y);
+            expectedPaymentsToPlot[j] = START_Y + ((float)expectedPayments[j] / (float) graphCeiling) * (END_Y - START_Y);
             //cout << "Expected Payments:" << expectedPaymentsToPlot[j] << "\n";
-            actualPaymentsToPlot[j] = START_Y + ((float) actualPayments[j] / (float) largestExpectedPayment) * (END_Y - START_Y);
+            actualPaymentsToPlot[j] = START_Y + ((float) actualPayments[j] / (float) graphCeiling) * (END_Y - START_Y);
             //cout << "Actual Payments:" << actualPaymentsToPlot[j] << "\n";
         }        
-    //Dates
     //Graphics
         //verify the output of this
-        expectedPaymentGraphPoints = new GLfloat * [lengthOfMembership];
-        for (int i = 0; i < lengthOfMembership; i++) {
-            expectedPaymentGraphPoints[i] = new GLfloat[3];
-            expectedPaymentGraphPoints[i][0] =  START_X+ ((i/lengthOfMembership)*(END_X - START_X)); //possible divide by zero error
-            expectedPaymentGraphPoints[i][1] = expectedPaymentsToPlot[i];
-            //cout << "Expected Payments:" << expectedPaymentGraphPoints[i][1] << "\n";
-            expectedPaymentGraphPoints[i][2]= 0;
- 
+        expectedPaymentGraphPoints = new GLfloat[lengthOfMembership * 3];
+        for (int i = 0; i < lengthOfMembership * 3; i += 3) {
+            expectedPaymentGraphPoints[i] = START_X + (((GLfloat)(i / 3) / (float)lengthOfMembership) * (END_X - START_X)); //possible divide by zero error
+            expectedPaymentGraphPoints[i + 1] = expectedPaymentsToPlot[(i) / 3];
+            expectedPaymentGraphPoints[i + 2] = 0;
         }
-
         //print (x,y) values
-        actualPaymentGraphPoints = new GLfloat * [lengthOfMembership];
-        for (int i = 0; i < lengthOfMembership; i++) {
-            actualPaymentGraphPoints[i] = new GLfloat[3];
-            actualPaymentGraphPoints[i][0] = START_X + (((GLfloat)i / (float) lengthOfMembership) * (END_X - START_X)); //possible divide by zero error
-            actualPaymentGraphPoints[i][1] = actualPaymentsToPlot[i];
-            //cout << "Actual Payments:" << actualPaymentGraphPoints[i][1] << "\n";
-            actualPaymentGraphPoints[i][2] = 0;
+        actualPaymentGraphPoints = new GLfloat [lengthOfMembership * 3];
+        for (int i = 0; i < lengthOfMembership * 3; i+=3) {
+            actualPaymentGraphPoints[i] = START_X + (((GLfloat)(i/3) / (float) lengthOfMembership) * (END_X - START_X)); //possible divide by zero error
+            actualPaymentGraphPoints[i+1] = actualPaymentsToPlot[(i)/3];
+            actualPaymentGraphPoints[i+2] = 0;
+            /*cout << "Actual Payments:" << actualPaymentGraphPoints[i] << ","
+                << actualPaymentGraphPoints[i+1] << ","
+                << actualPaymentGraphPoints[i+2] << ","
+                << "\n";*/
 
         }
     /****************End Translate Graphical Information*************/

@@ -56,10 +56,10 @@ TEST(UnauthorizedUser, InformationDenied) {
 TEST(GraphPoints, GraphPointsTranslated) {
     MultipleUsers userList;
     cout <<"Printout: " << userList.user[0].lengthOfMembership << "\n";
-    for (int i = 0; i < userList.user[0].lengthOfMembership; i++) {
-        cout << userList.user[0].actualPaymentGraphPoints[i][0]<<",";
-        cout << userList.user[0].actualPaymentGraphPoints[i][1] << ",";
-        cout << userList.user[0].actualPaymentGraphPoints[i][2] << "\n";
+    for (int i = 0; i < userList.user[0].lengthOfMembership*3; i+=3) {
+       /* cout << userList.user[0].actualPaymentGraphPoints[i] << ",";
+        cout << userList.user[0].actualPaymentGraphPoints[i+1] << ",";
+        cout << userList.user[0].actualPaymentGraphPoints[i+2] << "\n";*/
     }
 }
 
@@ -133,28 +133,24 @@ void drawVertices(bool revAlert) {
         
         
         GLfloat lineVerticesUser[36];
-        int k = 0;
-        for (int i = 0; i < userList.user[0].lengthOfMembership; i++) {
-            for (int j = 0;j<3; j++) {
-                //cout << userList.user[0].actualPaymentGraphPoints[i][2] << ",";
-                lineVerticesUser[k] = userList.user[0].actualPaymentGraphPoints[i][j];
-               cout << lineVerticesUser[k] <<",";
-                k++;
-            }
-            cout << "\n";
+        int k = 0; //do same for actual
+        for (int i = 0; i < userList.user[0].lengthOfMembership * 3; i += 3) {
+            cout << userList.user[0].expectedPaymentGraphPoints[i] << ",";
+            cout << userList.user[0].expectedPaymentGraphPoints[i + 1] << ",";
+            cout << userList.user[0].expectedPaymentGraphPoints[i + 2] << "\n";
         }
         cout << "\n";
 
-        glVertexPointer(3, GL_FLOAT, 0, lineVerticesUser); //use method to recreate
+        glVertexPointer(3, GL_FLOAT, 0, userList.user[0].expectedPaymentGraphPoints); //use method to recreate
         glColor3f(0.0, 0.0, 1.0); //blue
         glDrawArrays(GL_LINE_STRIP, 0, userList.user[0].lengthOfMembership);//plots the first x number of points
         glColor3f(1.0, 1.0, 1.0); //white
         glDisableClientState(GL_VERTEX_ARRAY);
 
         glEnableClientState(GL_VERTEX_ARRAY);
-        glVertexPointer(3, GL_FLOAT, 0, lineVerticesUser3);
+        glVertexPointer(3, GL_FLOAT, 0, userList.user[0].actualPaymentGraphPoints);
         glColor3f(0.0, 1.0, 0.0); //green
-        glDrawArrays(GL_LINE_STRIP, 0, 5);
+        glDrawArrays(GL_LINE_STRIP, 0, userList.user[0].lengthOfMembership);
         glColor3f(1.0, 1.0, 1.0); //white
         glDisableClientState(GL_VERTEX_ARRAY);
         glLineWidth(1); //revert the line width
@@ -228,10 +224,13 @@ void showMenuOptionsPopup(bool* p_open) {
     }
     else
     {
+        static float sliderFloat = 0.f;
+        static int sliderInt = 0;
+        ImGui::SliderFloat("GraphHeight", &sliderFloat, (float) userList.user[0].largestExpectedPayment, (float)userList.user[0].largestExpectedPayment*2);
         ImGui::Text("What would you like to do?");
         ImGui::Checkbox("View customer history?", &revAlert);
         ImGui::End();
-
+        //userList.user[0].setGraphCeiling(sliderFloat);
     }
 }
 
