@@ -1,4 +1,25 @@
-﻿imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwSetErrorCallback referenced in function "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPEAUGLFWwindow@@_NW4GlfwClientApi@@@Z)
+﻿  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  Source.cpp
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(142,45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(144,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(151,49): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(158,47): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(184,9): warning C4101: 'translatedGraphCeiling': unreferenced local variable
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(134,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(144,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(158,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(186,17): warning C4101: 'lineVerticesUser': unreferenced local variable
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(284,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(321,22): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(321,16): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+  Generating Code...
+imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwSetErrorCallback referenced in function "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPEAUGLFWwindow@@_NW4GlfwClientApi@@@Z)
 imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwSetMonitorCallback referenced in function "void __cdecl ImGui_ImplGlfw_InstallCallbacks(struct GLFWwindow *)" (?ImGui_ImplGlfw_InstallCallbacks@@YAXPEAUGLFWwindow@@@Z)
 imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwGetWindowSize referenced in function "void __cdecl ImGui_ImplGlfw_NewFrame(void)" (?ImGui_ImplGlfw_NewFrame@@YAXXZ)
 imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwGetFramebufferSize referenced in function "void __cdecl ImGui_ImplGlfw_NewFrame(void)" (?ImGui_ImplGlfw_NewFrame@@YAXXZ)
@@ -23,12 +44,19 @@ imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwSetClipboard
 imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwGetClipboardString referenced in function "char const * __cdecl ImGui_ImplGlfw_GetClipboardText(void *)" (?ImGui_ImplGlfw_GetClipboardText@@YAPEBDPEAX@Z)
 imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function "void __cdecl ImGui_ImplGlfw_NewFrame(void)" (?ImGui_ImplGlfw_NewFrame@@YAXXZ)
 imgui_impl_glfw.obj : error LNK2019: unresolved external symbol glfwGetWin32Window referenced in function "bool __cdecl ImGui_ImplGlfw_Init(struct GLFWwindow *,bool,enum GlfwClientApi)" (?ImGui_ImplGlfw_Init@@YA_NPEAUGLFWwindow@@_NW4GlfwClientApi@@@Z)
-Source.obj : error LNK2019: unresolved external symbol __imp_glBegin referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glBegin referenced in function "void __cdecl createGraph(bool,bool)" (?createGraph@@YAX_N0@Z)
 Source.obj : error LNK2019: unresolved external symbol __imp_glClear referenced in function main
-Source.obj : error LNK2019: unresolved external symbol __imp_glColor3f referenced in function main
-Source.obj : error LNK2019: unresolved external symbol __imp_glEnd referenced in function main
-Source.obj : error LNK2019: unresolved external symbol __imp_glLineWidth referenced in function main
-Source.obj : error LNK2019: unresolved external symbol __imp_glVertex2f referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glColor3f referenced in function "void __cdecl drawVertices(bool)" (?drawVertices@@YAX_N@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glDisableClientState referenced in function "void __cdecl drawVertices(bool)" (?drawVertices@@YAX_N@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glDrawArrays referenced in function "void __cdecl drawVertices(bool)" (?drawVertices@@YAX_N@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glEnableClientState referenced in function "void __cdecl drawVertices(bool)" (?drawVertices@@YAX_N@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glEnd referenced in function "void __cdecl createGraph(bool,bool)" (?createGraph@@YAX_N0@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glLineWidth referenced in function "void __cdecl createGraph(bool,bool)" (?createGraph@@YAX_N0@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glLoadIdentity referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glMatrixMode referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glVertex2f referenced in function "void __cdecl createGraph(bool,bool)" (?createGraph@@YAX_N0@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glVertexPointer referenced in function "void __cdecl drawVertices(bool)" (?drawVertices@@YAX_N@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glViewport referenced in function main
 Source.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
 Source.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
 Source.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
@@ -36,4 +64,4 @@ Source.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose ref
 Source.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
 Source.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
 Source.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\x64\Debug\ClosedGL.exe : fatal error LNK1120: 38 unresolved externals
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\x64\Debug\ClosedGL.exe : fatal error LNK1120: 45 unresolved externals

@@ -10,11 +10,11 @@
 using namespace std;
 MultipleUsers userList;
 
-/*
+
 TEST(MissedPayments, CollectionsNotified) {
-    MultipleUsers userList;
-    EXPECT_EQ(6, userList.user[0].underpaymentCount);
-    EXPECT_EQ(userList.user[0].status, "This Customer has missed 6 payments. Notifying collections");
+    MultipleUsers *usr = new MultipleUsers();
+    EXPECT_EQ(6, usr->user[0].underpaymentCount);
+    EXPECT_EQ(usr->user[0].status, "This Customer has missed 6 payments. Notifying collections");
 }
 
 TEST(MissedPayments, WarrantsAWarning) {
@@ -40,28 +40,79 @@ TEST(TimelyPayments, AFewMissedPayments) {
 TEST(TimelyPayments, ExtraPaymentsMade) {
     MultipleUsers userList;
     cout << userList.user[4].name <<"\n";
-    cout << "Actual Payments Size: "<< sizeof(userList.user[5].actualPayments) <<"\n";
-    cout << "Length Of Membership: " << sizeof(userList.user[5].lengthOfMembership)<<"\n";
-    cout << "Total Amount Expected: " << userList.user[5].totalAmountExpected<<"\n";
+
     EXPECT_EQ(0, userList.user[4].underpaymentCount);
     EXPECT_EQ(userList.user[4].status, "This Customer is in good standing");
 
 }
 
+TEST(TimelyPayments, UserInfoCollected) {
+    MultipleUsers userList;
+    cout << userList.user[4].name << "\n";
+
+    EXPECT_TRUE(sizeof(userList.user[4].actualPayments) >= sizeof(userList.user[5].lengthOfMembership)); //Length of membership should always expect a set amount of payments from the user
+    EXPECT_EQ(10, userList.user[4].lengthOfMembership); //Membership length was preset, so expect that value
+}
+
+
 TEST(UnauthorizedUser, InformationDenied) {
     MultipleUsers userList;
     EXPECT_EQ(userList.user[5].status, "Authentication failed!");
-}*/
+}
+
+TEST(UnauthorizedUser, AuthorizationKeySet) {
+    MultipleUsers userList;
+    EXPECT_EQ(userList.user[5].authKey, 3);
+}
 
 TEST(GraphPoints, GraphPointsTranslated) {
-    MultipleUsers userList;
-    cout <<"Printout: " << userList.user[0].lengthOfMembership << "\n";
-    for (int i = 0; i < userList.user[0].lengthOfMembership*3; i+=3) {
-       /* cout << userList.user[0].actualPaymentGraphPoints[i] << ",";
-        cout << userList.user[0].actualPaymentGraphPoints[i+1] << ",";
-        cout << userList.user[0].actualPaymentGraphPoints[i+2] << "\n";*/
+    //MultipleUsers userList;
+    MultipleUsers* userList = new MultipleUsers();
+    userList->user[0].setGraphicalData();
+    bool interfacesTranslated = true;
+    for (int i = 0; i < userList->user[0].lengthOfMembership*3; i+=3) {
+        if ((userList->user[0].actualPaymentGraphPoints[i] == userList->user[0].actualPaymentsToPlot[i]) ||
+            ( userList->user[0].actualPaymentGraphPoints[i+1] == userList->user[0].actualPaymentsToPlot[i+1])||
+            (userList->user[0].actualPaymentGraphPoints[i + 2] == userList->user[0].actualPaymentsToPlot[i + 2]))
+        {
+            interfacesTranslated = false;
+            break;
+        }
+       
     }
+    EXPECT_TRUE(interfacesTranslated);
 }
+
+
+
+TEST(GraphPoints, PrepareExpectedPaymentGraphPoints) {
+    MultipleUsers userList;
+    bool allEqual = true;
+    for (int i = 0; i < 12; i++) {
+        if (userList.user[0].expectedPaymentsToPlot[i] - 100.0 > 10.0) {
+            allEqual = false;
+            break;
+        }
+    }
+    EXPECT_TRUE(allEqual);
+}
+
+TEST(GraphPoints, SetGraphBounds) {
+    EXPECT_EQ(userList.user[0].largestExpectedPayment+100 , userList.user[0].getGraphCeiling());
+}
+
+TEST(GraphPoints, PrepareActualPaymentGraphPoints) {
+    MultipleUsers userList;
+    bool allEqual = true;
+    for (int i = 0; i < 12; i++) {
+        if (userList.user[0].actualPaymentsToPlot[i] - 100.0 > 10.0) {
+            allEqual = false;
+            break;
+        }
+    }
+    EXPECT_TRUE(allEqual);
+}
+
 
 GLfloat pointVertex[] = { SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 GLfloat pointVertex2[] = { SCREEN_WIDTH * 0.75, SCREEN_HEIGHT * 0.75 };
@@ -155,14 +206,14 @@ void drawVertices(bool revAlert) {
         glDisableClientState(GL_VERTEX_ARRAY);
         glLineWidth(1); //revert the line width
 
-        glLineWidth(3); //set the line width only for plotted points
+        /*glLineWidth(3); //set the line width only for plotted points
         glEnableClientState(GL_VERTEX_ARRAY);
         glVertexPointer(3, GL_FLOAT, 0, lineVerticesUser1); //use method to recreate
         glColor3f(1.0, 0.0, 0.0); //red
         glDrawArrays(GL_LINE_STRIP, 0, 5);
         glColor3f(1.0, 1.0, 1.0); //white
-        glDisableClientState(GL_VERTEX_ARRAY);
-        //RUN_ALL_TESTS();
+        glDisableClientState(GL_VERTEX_ARRAY);*/
+        
     }
        //glEnd();
     return;
@@ -230,7 +281,8 @@ void showMenuOptionsPopup(bool* p_open) {
         ImGui::Text("What would you like to do?");
         ImGui::Checkbox("View customer history?", &revAlert);
         ImGui::End();
-        //userList.user[0].setGraphCeiling(sliderFloat);
+        userList.user[0].setGraphCeiling(sliderFloat);
+        userList.user[0].setGraphicalData(); //May be repetitive
     }
 }
 
@@ -295,6 +347,7 @@ int main(int argc, char* argv[])
 
         if (selectedItem == 1) {            
             show_welcome_popup = false;
+            userList.user[0].authKey=1;
             if (show_menu_options_popup)
             {
                 showMenuOptionsPopup(&show_menu_options_popup);
