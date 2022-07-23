@@ -4,11 +4,15 @@ C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(144,43)
 C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(151,49): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(158,47): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(184,9): warning C4101: 'translatedGraphCeiling': unreferenced local variable
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(134,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(144,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(158,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(186,17): warning C4101: 'lineVerticesUser': unreferenced local variable
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(284,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(321,22): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(321,16): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(142,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(152,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(166,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(195,17): warning C4101: 'lineVerticesUser': unreferenced local variable
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(235,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(236,34): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(242,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(243,34): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(293,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(383,22): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Source.cpp(383,16): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
   ClosedGL.vcxproj -> C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\ClosedGL.exe

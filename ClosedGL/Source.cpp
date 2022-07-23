@@ -5,6 +5,10 @@
 #include <gtest/gtest.h>
 #include <UserInfo.h>
 #include <GraphicalUser.h>
+#include <sqlite3.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 
 
 using namespace std;
@@ -46,6 +50,7 @@ TEST(TimelyPayments, ExtraPaymentsMade) {
 
 }
 
+//NEW
 TEST(TimelyPayments, UserInfoCollected) {
     MultipleUsers userList;
     cout << userList.user[4].name << "\n";
@@ -60,11 +65,13 @@ TEST(UnauthorizedUser, InformationDenied) {
     EXPECT_EQ(userList.user[5].status, "Authentication failed!");
 }
 
+//TC1
 TEST(UnauthorizedUser, AuthorizationKeySet) {
     MultipleUsers userList;
     EXPECT_EQ(userList.user[5].authKey, 3);
 }
 
+//NEW
 TEST(GraphPoints, GraphPointsTranslated) {
     //MultipleUsers userList;
     MultipleUsers* userList = new MultipleUsers();
@@ -84,7 +91,7 @@ TEST(GraphPoints, GraphPointsTranslated) {
 }
 
 
-
+//TC 12
 TEST(GraphPoints, PrepareExpectedPaymentGraphPoints) {
     MultipleUsers userList;
     bool allEqual = true;
@@ -97,10 +104,11 @@ TEST(GraphPoints, PrepareExpectedPaymentGraphPoints) {
     EXPECT_TRUE(allEqual);
 }
 
+//TC12
 TEST(GraphPoints, SetGraphBounds) {
     EXPECT_EQ(userList.user[0].largestExpectedPayment+100 , userList.user[0].getGraphCeiling());
 }
-
+//TC12
 TEST(GraphPoints, PrepareActualPaymentGraphPoints) {
     MultipleUsers userList;
     bool allEqual = true;
@@ -161,7 +169,8 @@ GLfloat lineVerticesUser3[3][9] = { //now you can dynamically declare the line v
 void drawVertices(bool revAlert) {
  
 
-    if (revAlert) {    
+    if (revAlert) {  
+     
         glLineWidth(3); //set the line width only for plotted points
         glEnableClientState(GL_VERTEX_ARRAY);
 
@@ -185,12 +194,12 @@ void drawVertices(bool revAlert) {
         
         GLfloat lineVerticesUser[36];
         int k = 0; //do same for actual
-        for (int i = 0; i < userList.user[0].lengthOfMembership * 3; i += 3) {
+       /* for (int i = 0; i < userList.user[0].lengthOfMembership * 3; i += 3) {
             cout << userList.user[0].expectedPaymentGraphPoints[i] << ",";
             cout << userList.user[0].expectedPaymentGraphPoints[i + 1] << ",";
             cout << userList.user[0].expectedPaymentGraphPoints[i + 2] << "\n";
         }
-        cout << "\n";
+        cout << "\n";*/
 
         glVertexPointer(3, GL_FLOAT, 0, userList.user[0].expectedPaymentGraphPoints); //use method to recreate
         glColor3f(0.0, 0.0, 1.0); //blue
@@ -277,7 +286,7 @@ void showMenuOptionsPopup(bool* p_open) {
     {
         static float sliderFloat = 0.f;
         static int sliderInt = 0;
-        ImGui::SliderFloat("GraphHeight", &sliderFloat, (float) userList.user[0].largestExpectedPayment, (float)userList.user[0].largestExpectedPayment*2);
+        ImGui::SliderFloat("GraphHeight", &sliderFloat, (float) userList.user[0].largestExpectedPayment*2, (float)userList.user[0].largestExpectedPayment);
         ImGui::Text("What would you like to do?");
         ImGui::Checkbox("View customer history?", &revAlert);
         ImGui::End();
@@ -286,12 +295,65 @@ void showMenuOptionsPopup(bool* p_open) {
     }
 }
 
+bool crayon = false;
+
+static int callback(void* NotUsed, int argc, char** argv, char** azColName) {
+    int i;
+    for (i = 0; i < argc; i++) {
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+    printf("\n");
+    return 0;
+}
 
 int main(int argc, char* argv[])
 {
     GLFWwindow* window;
+    //sqlite3_open();
 
     //MultipleUsers userList;//each user list currently has 6 users
+    if (!crayon) {
+        sqlite3* db;
+        char* zErrMsg = 0;
+        int rc;
+        const char *sql;
+
+        rc = sqlite3_open("test.db", &db);
+
+        if (rc) {
+            fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+            return(0);
+        }
+        else {
+            fprintf(stderr, "Opened database successfully\n");
+        }
+        
+
+        /* Create SQL statement */
+        sql = "CREATE TABLE CUSTOMER ("  \
+            "ID INT PRIMARY KEY     NOT NULL," \
+            "NAME           TEXT    NOT NULL," \
+            "AGE            INT     NOT NULL," \
+            "ADDRESS        CHAR(50)," \
+            "PAYMENT        REAL );";
+
+        /* Execute SQL statement */
+        rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+
+        sql = "PRAGMA table_info(CUSTOMER);";
+
+        rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+            sqlite3_free(zErrMsg);
+        }
+        else {
+            fprintf(stdout, "Table created successfully\n");
+        }
+        sqlite3_close(db);
+        crayon = true;
+    }
 
     testing::InitGoogleTest(&argc, argv);
 
