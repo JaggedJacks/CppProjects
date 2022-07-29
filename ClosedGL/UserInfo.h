@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <graphicalUser.h>
+#include <Model.cpp>
 
 using namespace std;
 
@@ -25,6 +26,7 @@ int actual[6][12] = { { 50, 100, 30, 100,90, 100, 100, 85,100, 100, 95, 90 },
 
 //length of membership in months for each member. There are 6 users that are members in total.
 int membLength[6] = { 12,12,12,12,10,12 };
+
 
 //The initial class that contains all of the attributes of a user that will be included in a database at a later point
 class UserInfo {
@@ -70,6 +72,7 @@ UserInfo::UserInfo() {
 }
 
 //Constructor with arguments that initializes the fields
+//all of the user info fields should come from the model
 UserInfo::UserInfo(string name, int* expectedPayments, int* actualPayments, int lengthOfMembership, bool authentication) {
     name = name;
     this->expectedPayments = expectedPayments;
@@ -188,6 +191,7 @@ void UserInfo::setGraphCeiling(int ceiling) {
 }
 //Create multiple users, useful for testing multiple scenarios
 class MultipleUsers {
+    Model model;
 public:
     UserInfo user[6];
     MultipleUsers() {
