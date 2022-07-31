@@ -193,11 +193,11 @@ void UserInfo::setGraphCeiling(int ceiling) {
 class MultipleUsers {
     Model model;
 public:
-    UserInfo user[6];
+    UserInfo user[6]; // parse the model to see how many users there are
     MultipleUsers() {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 3; i++) { //i is number of users
             if (i != 5)
-                user[i] = UserInfo(names[i], expected[i], actual[i], membLength[i], true);
+                user[i] = UserInfo(names[i], model.expectedVals[i], model.actualVals[i], membLength[i], true);
             else
                 user[i] = UserInfo(names[i], expected[i], actual[i], membLength[i], false);
         }
