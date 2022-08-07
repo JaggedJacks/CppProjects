@@ -1,33 +1,21 @@
-﻿  sqlite3.c
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  Model.cpp
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Model.cpp(276,2): warning C4091: 'static ': ignored on left of 'Model' when no variable is declared
-  View.cpp
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Model.cpp(276,2): warning C4091: 'static ': ignored on left of 'Model' when no variable is declared
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(145,45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(147,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(154,49): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(161,47): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(187,9): warning C4101: 'translatedGraphCeiling': unreferenced local variable
+﻿  View.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Dependencies\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(205,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(215,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(229,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(258,17): warning C4101: 'lineVerticesUser': unreferenced local variable
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(298,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(299,34): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(305,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(306,34): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(356,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(413,22): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(413,16): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-  Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Model.cpp(331,2): warning C4091: 'static ': ignored on left of 'Model' when no variable is declared
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(146,45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(148,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(155,49): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(162,47): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\UserInfo.h(188,9): warning C4101: 'translatedGraphCeiling': unreferenced local variable
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(63,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(73,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(87,1): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(143,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(144,34): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(150,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(151,34): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(217,64): warning C4551: function call missing argument list
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(248,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(304,22): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\View.cpp(304,16): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
   ClosedGL.vcxproj -> C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\ClosedGL.exe

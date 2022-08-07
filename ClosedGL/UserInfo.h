@@ -106,12 +106,13 @@ UserInfo::UserInfo(string name, int* expectedPayments, int* actualPayments, int 
             totalAmountExpected += expectedPayments[i]; //accumulate the amount of payments expected each month
         }
 
-        //If the number of payments made is more than the number of payments agreed on, report extra payments
-       /* if (sizeof(actualPayments) > lengthOfMembership) {
+        /* if (sizeof(actualPayments) > lengthOfMembership) {
+       * //If the number of payments made is more than the number of payments agreed on, report extra payments
             status = "Extra Payments Have been made.";
             delinquent = false;
             //make this an elsifstatement with the  rest of the ifs
         }*/
+
         //If 90 percent or more of the payments are made, the customer is in good standing
         if (underpaymentCount <= lengthOfMembership * .1) {
             status = "This Customer is in good standing";
@@ -148,7 +149,7 @@ void UserInfo::setGraphicalData() {
         //cout << "Actual Payments:" << actualPaymentsToPlot[j] << "\n";
     }
     //Graphics
-        //verify the output of this
+        //verify the output of this (x,y,z)
     expectedPaymentGraphPoints = new GLfloat[lengthOfMembership * 3];
     for (int i = 0; i < lengthOfMembership * 3; i += 3) {
         expectedPaymentGraphPoints[i] = START_X + (((GLfloat)(i / 3) / (float)lengthOfMembership) * (END_X - START_X)); //possible divide by zero error

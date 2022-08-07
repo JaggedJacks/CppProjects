@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GtaTestDurations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Executable>C:\Users\mathe\OneDrive\Documents\GitHub\CppProjects\ClosedGL\Debug\ClosedGL.exe</Executable>
+  <TestDurations>
+    <TestDuration Test="GraphPoints.GraphPointsTranslated" Duration="9" />
+    <TestDuration Test="MissedPayments.CollectionsNotified" Duration="12" />
+    <TestDuration Test="MissedPayments.WarrantsAWarning" Duration="9" />
+    <TestDuration Test="TimelyPayments.PerfectHistory" Duration="8" />
+    <TestDuration Test="TimelyPayments.AFewMissedPayments" Duration="17" />
+    <TestDuration Test="TimelyPayments.ExtraPaymentsMade" Duration="9" />
+    <TestDuration Test="UnauthorizedUser.InformationDenied" Duration="9" />
+    <TestDuration Test="TimelyPayments.UserInfoCollected" Duration="13" />
+    <TestDuration Test="UnauthorizedUser.AuthorizationKeySet" Duration="11" />
+    <TestDuration Test="GraphPoints.PrepareExpectedPaymentGraphPoints" Duration="10" />
+    <TestDuration Test="GraphPoints.SetGraphBounds" Duration="1" />
+    <TestDuration Test="GraphPoints.PrepareActualPaymentGraphPoints" Duration="9" />
+    <TestDuration Test="Database.createDatabase" Duration="10" />
+    <TestDuration Test="Database.readFromDatabase" Duration="24" />
+    <TestDuration Test="Database.expectedValues" Duration="13" />
+    <TestDuration Test="Database.actualValues" Duration="9" />
+    <TestDuration Test="Database.idValues" Duration="85" />
+  </TestDurations>
+</GtaTestDurations>
